@@ -1,0 +1,33 @@
+{
+    "A": {
+      "B": {"distance": 5, "flood-risk": 3},
+      "C": {"distance": 7, "flood-risk": 2},
+      "D": {"distance": 10, "flood-risk": 5},
+      "E": {"distance": 3, "flood-risk": 1}
+    },
+    "B": {
+      "A": {"distance": 5, "flood-risk": 3},
+      "C": {"distance": 2, "flood-risk": 4},
+      "D": {"distance": 8, "flood-risk": 2},
+      "E": {"distance": 6, "flood-risk": 2}
+    },
+    "C": {
+      "A": {"distance": 7, "flood-risk": 2},
+      "B": {"distance": 2, "flood-risk": 4},
+      "D": {"distance": 6, "flood-risk": 3},
+      "E": {"distance": 5, "flood-risk": 1}
+    },
+    "D": {
+      "A": {"distance": 10, "flood-risk": 5},
+      "B": {"distance": 8, "flood-risk": 2},
+      "C": {"distance": 6, "flood-risk": 3},
+      "E": {"distance": 3, "flood-risk": 6}
+    },
+    "E": {
+      "A": {"distance": 3, "flood-risk": 1},
+      "B": {"distance": 6, "flood-risk": 2},
+      "C": {"distance": 5, "flood-risk": 1},
+      "D": {"distance": 3, "flood-risk": 6}
+    }
+  }
+  
