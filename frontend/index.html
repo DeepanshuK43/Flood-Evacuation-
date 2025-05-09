@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flood Evacuation Route Optimizer</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-light">
+    <div class="container my-5">
+      <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">🚨 Flood Evacuation Route Optimizer</h2>
+
+        <div class="mb-3">
+          <label for="start" class="form-label">Start Node</label>
+          <input
+            type="text"
+            id="start"
+            class="form-control"
+            placeholder="e.g. A"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="end" class="form-label">End Node</label>
+          <input
+            type="text"
+            id="end"
+            class="form-control"
+            placeholder="e.g. D"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="algo" class="form-label">Choose Algorithm</label>
+          <select id="algo" class="form-select">
+            <option value="dijkstra">Dijkstra</option>
+            <option value="bfs">BFS</option>
+            <option value="dfs">DFS</option>
+            <option value="astar">A*</option>
+          </select>
+        </div>
+
+        <div class="text-center">
+          <button onclick="getPath()" class="btn btn-primary">
+            Find Route
+          </button>
+        </div>
+
+        <div class="mt-4">
+          <h5>🛣️ Result:</h5>
+          <pre id="output" class="bg-white p-3 border rounded"></pre>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
