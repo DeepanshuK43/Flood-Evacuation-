@@ -1,27 +1,35 @@
-import React, { useEffect, useState } from 'react';
+async function getPath() {
+  const start = document.getElementById("start").value.trim();
+  const end = document.getElementById("end").value.trim();
+  const algo = document.getElementById("algo").value;
 
-function App() {
-  const [message, setMessage] = useState("Connecting to backend...");
+  if (!start || !end) {
+    document.getElementById("output").innerText =
+      "❌ Please enter both start and end nodes.";
+    return;
+  }
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/test') // Backend must be running on port 5000
-      .then(res => res.json())
-      .then(data => {
-        console.log("✅ Backend says:", data.message);
-        setMessage(data.message);
-      })
-      .catch(err => {
-        console.error("❌ Error connecting to backend:", err);
-        setMessage("❌ Could not connect to backend");
-      });
-  }, []);
+  try {
+    const response = await fetch(`http://127.0.0.1:5000/${algo}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ start, end }),
+    });
 
-  return (
-    <div style={{ padding: '2rem', fontFamily: 'Arial' }}>
-      <h1>Flood Evacuation App</h1>
-      <p>Status: {message}</p>
-    </div>
-  );
+    const data = await response.json();
+
+    if (response.ok) {
+      document.getElementById("output").innerText = `✅ Path: ${data.path.join(
+        " → "
+      )}\n🧭 Cost: ${data.distance}`;
+    } else {
+      document.getElementById("output").innerText = `⚠️ ${data.error}`;
+    }
+  } catch (err) {
+    document.getElementById("output").innerText =
+      "❌ Could not reach the backend server.";
+    console.error(err);
+  }
 }
-
-export default App;
